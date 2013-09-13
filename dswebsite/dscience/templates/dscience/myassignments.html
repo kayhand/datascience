@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+{% endblock %}
+
+{% block body %}
+
+<!-- Content -->
+<div id="content" class="colMS">
+    
+<div id="content-main">
+    <div class="module">
+        <table>
+            <caption>
+                <a href="/dscience/myassignments/" class="section" title="Homeworks">
+                    My Assignments
+                </a>
+            </caption>
+            {% if myAssignInfo %}
+            {% for assign in myAssignInfo %}
+                <tr>
+                    <th scope="row"> <a href="/dscience/myassignments/{{assign.id}}"> {{assign.group.presentation.topic}} </a></th>
+                    <td> DUE : {{assign.due_date}} </td>
+                    
+                </tr>
+            {% endfor %}
+            {% else %}
+                <tr>
+                    <th scope="row"> You don't have any homeworks </th>
+                </tr>
+            {% endif %}
+            
+        </table>
+    </div>
+</div>
+    
+</div>
+{% endblock %}

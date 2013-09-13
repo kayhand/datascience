@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<script>
+    $(function() {
+      $( "#id_form_date_field" ).datepicker({ dateFormat:
+                                            'yy-mm-dd'});
+      });
+    
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+{% if assignInfo %}
+<form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <fieldset class="module aligned ">
+            
+            <div class="form-row field-group">
+                <div>
+                    <label for="id_group" class="required">Group: </label>
+                    <p id="id_group" name="group"> {{ uProfile.group.name }} </p>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div>
+                    <label for="id_upload_due_date_0" class="required">Upload due:</label>
+                    <h3 style="color:red;"> <b> <i> {{assignInfo.upload_due_date}} </i> </b> </h3>
+                </div>
+            </div>
+            
+            <div class="form-row field-file">
+                {{ form.assignfile.errors }}
+                {% if not assignInfo.file %}
+                <div>
+                    <label for="id_file">File:</label>You haven't uploaded any assignment yet.
+                        <br />Add: {{ form.assignfile }}
+                    
+                    </p>
+                </div>
+                {% else %}
+                <div>
+                    <label for="id_file">File:</label>
+                    <p class="file-upload"> Currently:
+                    <a href="{{assignInfo.file.url}}"> {{ uProfile.group.name }} upload  </a>
+                    <br />Change: {{ form.assignfile }}
+                    
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="form-row field-due_date">
+                {{ form.dueDate.errors }}
+                <div>
+                    <label for="id_form_date_field">Due date:</label>
+                    
+                    <p class="datetime">
+                    <p>
+
+                    {{ form.dueDate }}
+                    </p>
+                    
+                    </p>
+                </div>
+                
+            </div>
+            
+        </fieldset>
+        
+        <div class="submit-row">
+            <input type="submit" value="Save" class="default" name="_save" />
+        </div>
+        
+    </div>
+</form>
+
+{% else %}
+
+<div>
+    <fieldset class="module aligned ">
+        
+        <div class="form-row field-group">
+            <div>
+                <p id="id_group" name="group"> You should present before you give your assignment. </p>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+{% endif %}
+
+
+{% endblock %}

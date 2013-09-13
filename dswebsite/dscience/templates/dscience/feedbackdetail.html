@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<script>
+    $(function() {
+      $( "#id_form_date_field" ).datepicker({ dateFormat:
+                                            'yy-mm-dd'});
+      });
+    
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <fieldset class="module aligned ">
+            
+            <div class="form-row field-topic">
+                <div>
+                    <label for="id_user" class="required">User: </label>
+                    <p id="id_user" name="user"> {{ feedback.user_getting_feedback }} </p>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div>
+                    <label for="id_upload_due_date_0" class="required">Due Date:</label>
+                    <h3 style="color:red;"> <b> <i> {{feedback.due_date}} </i> </b> </h3>
+                </div>
+            </div>
+  
+            <div class="form-row field-file">
+                <div>
+                    <label for="id_topic">Presentation </label>
+                    <p id="id_topic" name="topic"> {{ feedback.presentation.topic.name }} </p>
+                </div>
+            </div>
+            
+            <div class="form-row field-clarity">
+                {{ form.clarity.errors }}
+                <div>
+                    <label for="id_file">Clarity:</label>
+                    <br />
+                    {% for radio in form.clarity %}
+                    {% if not forloop.first %}
+                    <div class="myradio">
+                        {{ radio }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    </p>
+                </div>
+                
+            </div>
+
+            <div class="form-row field-exposition">
+                {{ form.exposition.errors }}
+                <div>
+                    <label for="id_file">Exposition:</label>
+                    <br />
+                    {% for radio in form.exposition %}
+                    {% if not forloop.first %}
+                    <div class="myradio">
+                        {{ radio }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    </p>
+                </div>
+                
+            </div>
+            
+            <div class="form-row field-smoothness">
+                {{ form.smoothness.errors }}
+                <div>
+                    <label for="id_file">Smoothness:</label>
+                    <br />
+                    {% for radio in form.smoothness %}
+                    {% if not forloop.first %}
+                    <div class="myradio">
+                        {{ radio }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    </p>
+                </div>
+                
+            </div>
+
+            <div class="form-row field-qa">
+                {{ form.qa.errors }}
+                <div>
+                    <label for="id_file">Q-A:</label>
+                    <br />
+                    {% for radio in form.qa %}
+                    {% if not forloop.first %}
+                    <div class="myradio">
+                        {{ radio }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    </p>
+                </div>
+                
+            </div>
+            
+            <div class="form-row field-file">
+                {{ form.comments.errors }}
+                <div>
+                    <label for="id_comment">Comments </label>
+                    <p id="id_comment" name="comment"> {{ form.comments }} </p>
+                </div>
+            </div>
+            
+        </fieldset>
+
+        <div class="submit-row">
+            <input type="submit" value="Save" class="default" name="_save" />
+        </div>
+        
+    </div>
+</form>
+
+{% endblock %}
+

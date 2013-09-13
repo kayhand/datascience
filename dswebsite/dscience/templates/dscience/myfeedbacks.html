@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+{% endblock %}
+
+{% block body %}
+
+{% for feedback in fInfo %}
+
+<!-- Content -->
+<div id="content" class="colMS">
+    
+    <div id="content-main">
+        <div class="module">
+            <table>
+                <caption>
+                    <a href="/dscience/feedback/" class="section" title="Homeworks">
+                        Feedback {{forloop.counter}}
+                    </a>
+                </caption>
+                
+                <tr>
+                    <th scope="row"> Presentation </th>
+                    <td> {{feedback.presentation.topic.name}} </td>
+                    
+                </tr>
+                
+                <tr>
+                    <th scope="row"> Clarity </th>
+                    <td> {{feedback.clarity}} </td>
+                </tr>
+
+                <tr>
+                    <th scope="row"> Exposition </th>
+                    <td> {{feedback.exposition}} </td>
+                </tr>
+                
+                <tr>
+                    <th scope="row">  Smoothness </th>
+                    <td> {{feedback.smoothness}} </td>
+                </tr>
+                
+                <tr>
+                    <th scope="row">  Q-A </th>
+                    <td> {{feedback.qa}} </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">  Comments </th>
+                    <td> {{feedback.comments}} </td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+{% endfor %}
+
+{% endblock %}
