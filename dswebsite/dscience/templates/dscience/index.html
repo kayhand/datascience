@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+{% endblock %}
+
+{% block body %}
+
+<!-- Content -->
+<div id="content" class="colMS">
+    <div id="content-main">
+        <div>
+            <table>
+                <tr>
+                    <th scope="row"> <a href="/dscience/assignment/">Give assignment</a> </th>
+                    
+                </tr>
+                <tr>
+                    <th scope="row"> <a href="/dscience/presentation/">Presentation details</a> </th>
+                    
+                </tr>
+                <tr>
+                    <th scope="row"> <a href="/dscience/myassignments/">My Assignments</a> </th>
+                    
+                </tr>
+                <tr>
+                    <th scope="row"> <a href="/dscience/feedback/">Give Feedback</a> </th>
+                    
+                </tr>
+                <tr>
+                    <th scope="row"> <a href="/dscience/myfeedbacks/">My Feedbacks</a> </th>
+                    
+                </tr>
+                <tr>
+                    <th scope="row"> <a href="/dscience/logout">logout</a> </th>
+                    
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

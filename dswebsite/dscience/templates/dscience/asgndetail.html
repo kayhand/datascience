@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<script>
+    $(function() {
+      $( "#id_form_date_field" ).datepicker({ dateFormat:
+                                            'yy-mm-dd'});
+      });
+    
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <fieldset class="module aligned ">
+            
+            <div class="form-row field-topic">
+                <div>
+                    <label for="id_topic" class="required">Topic: </label>
+                    <p id="id_topic" name="topic"> {{ asgn.group.presentation.topic }} </p>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div>
+                    <label for="id_upload_due_date_0" class="required">Due Date:</label>
+                    <h3 style="color:red;"> <b> <i> {{asgn.due_date}} </i> </b> </h3>
+                </div>
+            </div>
+  
+            <div class="form-row field-file">
+                <div>
+                    <label for="id_file">Assignment </label>
+                    <a href="{{asgn.file.url}}"> View Assignment  </a>
+                </div>
+            </div>
+            
+            <div class="form-row field-file">
+                {{ form.assignfile.errors }}
+                <div>
+                    <label for="id_file">Your submission:</label>
+                    <br />
+                    {% if homew %}
+                        <a href="{{homew.file.url}}"> Previous submission  </a>
+                    {% else %}
+                        No submission yet.
+                    {% endif %}
+                        {{ form.myassignfile }}                    
+                    </p>
+                </div>
+            </div>
+            
+        </fieldset>
+        
+        <div class="submit-row">
+            <input type="submit" value="Save" class="default" name="_save" />
+        </div>
+        
+    </div>
+</form>
+
+{% endblock %}

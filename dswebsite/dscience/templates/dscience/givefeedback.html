@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+{% endblock %}
+
+{% block body %}
+
+<!-- Content -->
+<div id="content" class="colMS">
+    
+    <div id="content-main">
+        <div class="module">
+            <table>
+                <caption>
+                    <a href="/dscience/feedback/" class="section" title="Homeworks">
+                        Feedbacks Waiting
+                    </a>
+                </caption>
+                {% if fInfo %}
+                {% for feedback in fInfo %}
+                <tr>
+                    <th scope="row"> <a href="/dscience/feedback/{{feedback.id}}"> {{feedback.user_getting_feedback}} </a></th>
+                    <td> DUE : {{feedback.due_date}} </td>
+                    
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <th scope="row"> You don't need to give any feedbacks now. </th>
+                </tr>
+                {% endif %}
+                
+            </table>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

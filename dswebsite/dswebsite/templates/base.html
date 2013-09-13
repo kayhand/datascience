@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      {% load staticfiles %}
+      
+      <link rel="stylesheet" href={% static "dscience/style/uniform/themes/aristo/css/uniform.aristo.css" %} media="screen" />
+      <link type="text/css" href={% static "dscience/media/jquery/css/ui-lightness/jquery-ui-1.10.3.custom.css" %} rel="Stylesheet" />
+      <script type="text/javascript" src={% static "dscience/media/jquery/js/jquery-1.9.1.js" %}></script>
+      <script type="text/javascript" src={% static "dscience/media/jquery/js/jquery-ui-1.10.3.custom.min.js" %}></script>
+      <script src={% static "dscience/style/uniform/jquery.uniform.js" %}></script>
+      
+
+      <link rel="stylesheet" type="text/css" href="/media/css/base.css" />
+      <link rel="stylesheet" type="text/css" href="/media/css/login.css" />
+      <link rel="stylesheet" type="text/css" href="/media/css/forms.css" />
+      
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+      <!-- Container -->
+      <div id="container">
+          
+          
+          <!-- Header -->
+          <div id="header">
+              <div id="branding">
+                  <h1 id="site-name">Data Science Class</h1>
+              </div>
+              <div id="user-tools">
+                  Welcome,
+                  <strong>{{uProfile.user.username}}</strong>.
+                  
+                  <a href="/admin/password_change/">Change password</a> /
+                  
+                  <a href="/dscience/logout/">Log out</a>
+                  
+              </div>
+              
+              
+          </div>
+          <div class="breadcrumbs">
+              <a href="/dscience/">Home</a>
+              &rsaquo;
+              <a href="/dscience/presentation/">Presentation</a>
+              &rsaquo;
+              <a href="/dscience/assignment">Assignment</a>
+              &rsaquo;
+          </div>
+          
+          {% if messages %}
+          <ul class="messagelist">
+              {% for message in messages %}
+              <li class="info">{{ message }}</li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+          
+    {% block body %}{% endblock %}
+  </body>
+</html>
